@@ -1,0 +1,15 @@
+{
+  "list": [
+    {
+      "name": "线路区域一",
+      "routes": [
+        "https://www.v2ex.com/",
+        "https://mvnrepository.com/",
+        "https://www.baidu.com/",
+        "https://packagist.org/explore/",
+        "https://www.npmjs.com/",
+        "https://wiki.haskell.org/"
+      ]
+    }
+  ]
+}

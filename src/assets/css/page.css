@@ -1,0 +1,23 @@
+.page_num{padding:10px 0 20px;overflow:hidden; text-align: center;}
+#page_div{line-height:21px; color:#666;display: inline-block;}
+#pagination_input{ width:30px; height:20px; line-height:20px; color:#333; background:#fff;margin: 0 6px; vertical-align: middle; overflow:hidden; border:1px solid #ccc; font-size:12px; }
+#pagination_btn{height: 23px;background: #f0f0f0;border: 1px #ccc solid;vertical-align: middle;font-family: "微软雅黑";color: #666; cursor:pointer;}
+#page_div .pagination_index{ margin:0 4px;float: left; height:22px; line-height:22px;text-align:center;font-size:14px; width:56px;display: inline-block;}
+#page_div .pagination_index a, #page_div .pagination_index_num a{padding:0px; margin:0px;text-align:center;  color:#666666;font-size:14px;}
+#page_div .pagination_index a:hover, #page_div .pagination_index_num a:hover{padding:0px; margin:0px;text-align:center;  color:#666666;font-size:14px;}
+#page_div .pagination_index1{border:1px #cccccc solid;padding:0 8px; margin:0 4px;float: left; height:29px; line-height:29px;text-align:center;font-size:14px; width:56px;background:url(../images/next.png) right center no-repeat;}
+#page_div .pagination_index1 a, #page_div .pagination_index_num a{padding:0px; margin:0px;text-align:center;  color:#666666;font-size:14px;}
+#page_div .pagination_index1 a:hover, #page_div .pagination_index_num a:hover{padding:0px; margin:0px;text-align:center;  color:#666666;font-size:14px;}
+#page_div .pagination_index_last{font-size:14px;display: inline-block;}
+#page_div .pagination_index_num{padding:0 6px;float: left; height:21px; line-height:21px;font-size:14px;display: inline-block;}
+#page_div .currentIndex{ background:#1f81cd;height:21px;
+line-height:21px; color:#FFF;text-align:center;font-size:14px;}
+
+.pagination-first,.pagination-last{display: inline-block;}
+.pagination-index,.pagination-num{border: 1px solid #999;margin: 0 3px;padding:0 10px;display: inline-block;border-radius: 3px;color: #999;}
+.pagination-num.active,.pagination-index:hover,.pagination-num:hover{background: #015293;color: white;}
+.pagination-last>span{margin: 0 10px;}
+.pagination-last>input{height: 18px;width: 30px;text-align: center;}
+@media screen and (max-width:768px){
+#page_div .pagination_index_last{display:none;}
+}
