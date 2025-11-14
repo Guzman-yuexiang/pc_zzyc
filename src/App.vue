@@ -47,7 +47,7 @@
           <a href="#/index">国家烟草专卖局</a>
         </li>
         <li class="">
-          <a href="#/channel">专卖监管</a>
+          <a href="#/channel">服务与产品</a>
         </li>
         <li>
           <a href="#/news">行业资讯</a>
@@ -88,7 +88,7 @@
     }">
   <ul>
     <li><a href="#/index">首页</a></li>
-    <li><a href="#/channel">监管</a></li>
+    <li><a href="#/channel">业务</a></li>
     <li><a href="#/news">资讯</a></li>
     <li><a href="#/about">专题</a></li>
     <div class="cl"></div>
@@ -362,6 +362,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { reactive, watch, onMounted, onBeforeUnmount, ref } from "vue";
 import { useRoute } from "vue-router";
@@ -432,7 +433,6 @@ const applyHomeViewport = () => {
   if (!meta) {
     return;
   }
-  
   // 获取设备实际宽度
   // 检测是否为移动设备
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -475,6 +475,7 @@ const applyDefaultViewport = () => {
   if (!meta) {
     return;
   }
+  // 其他页面使用默认 viewport，让媒体查询正常工作
   meta.setAttribute("content", "width=device-width, initial-scale=1.0");
 };
 
@@ -520,18 +521,3 @@ onBeforeUnmount(() => {
   window.removeEventListener("orientationchange", handleResize);
 });
 </script>
-<style scoped>
-a:hover {
-  cursor: pointer;
-}
-
-.inTopBot {
-  display: flex;
-}
-
-.fl {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-</style>

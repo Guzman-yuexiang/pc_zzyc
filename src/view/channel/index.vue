@@ -91,7 +91,6 @@ import {
   reactive,
   computed,
   onUnmounted,
-  onBeforeUnmount,
 } from "vue";
 import { useRouter } from "vue-router";
 import SuperTask from "../../utils/superTask";
@@ -192,26 +191,7 @@ onMounted(async () => {
   } catch (error) {
     console.error("加载路由配置失败:", error);
   }
-  // 查找是否已经存在 viewport meta 标签
-  let meta = document.querySelector('meta[name="viewport"]');
-
-  // 如果没有找到，则创建一个新的 meta 标签
-  if (!meta) {
-    meta = document.createElement("meta");
-    meta.name = "viewport";
-    document.head.appendChild(meta);
-  }
-
-  // 设置自定义的 viewport 内容
-  meta.content =
-    "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover";
-});
-onBeforeUnmount(() => {
-  // 在页面卸载时，恢复为默认的 viewport 设置
-  let meta = document.querySelector('meta[name="viewport"]');
-  if (meta) {
-    meta.content = "width=device-width, initial-scale=1.0";
-  }
+  // viewport 设置由 App.vue 统一管理，这里不需要手动设置
 });
 
 onUnmounted(() => {
