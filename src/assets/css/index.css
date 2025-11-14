@@ -1280,8 +1280,9 @@ h3.inhdjltit {
 	height: 75px;
 }
 
+/* 首页不受媒体查询影响，使用 viewport 缩放实现响应式 */
 @media screen and (max-width:768px) {
-	.webbtn {
+	html:not(.is-home) .webbtn {
 		background: #0053a7;
 		text-align: center;
 		color: #fff;
@@ -1289,46 +1290,46 @@ h3.inhdjltit {
 		border-top: 1px solid #fff;
 	}
 
-	.webbtn a {
+	html:not(.is-home) .webbtn a {
 		color: #fff;
 	}
 
-	.webbtn a img {
+	html:not(.is-home) .webbtn a img {
 		vertical-align: sub;
 	}
 
-	.inTopNewsTit {
+	html:not(.is-home) .inTopNewsTit {
 		text-align: center;
 		width: 100%;
 		margin: 0;
 		display: none;
 	}
 
-	.inTopNewsTit a {
+	html:not(.is-home) .inTopNewsTit a {
 		display: inline-block;
 		width: auto;
 		height: 46px;
 		padding: 0 40px;
 	}
 
-	.inTopNewsRight {
+	html:not(.is-home) .inTopNewsRight {
 		width: 100%;
 		text-align: left;
 		display: none;
 	}
 
-	.inTopNewsRight dt {
+	html:not(.is-home) .inTopNewsRight dt {
 		line-height: 40px;
 		text-align: justify;
 		padding: 20px 0 10px;
 	}
 
-	.inTopNewsRight dd {
+	html:not(.is-home) .inTopNewsRight dd {
 		line-height: 26px;
 		text-align: justify;
 	}
 
-	.inTopImg {
+	html:not(.is-home) .inTopImg {
 		height: auto;
 		line-height: 40px;
 		margin: 0;
@@ -1336,39 +1337,38 @@ h3.inhdjltit {
 		padding: 20px 0;
 	}
 
-	.inBlock1 {
+	html:not(.is-home) .inBlock1 {
 		padding: 0 0 25px;
 	}
 
-	.inJdt {
+	html:not(.is-home) .inJdt {
 		width: 100%;
 		height: auto;
 	}
 
-	.inJdt .focusBox {
+	html:not(.is-home) .inJdt .focusBox {
 		height: 210px;
 	}
 
-	.inJdt .focusBox .pic img {
+	html:not(.is-home) .inJdt .focusBox .pic img {
 		height: auto;
 	}
 
-	.inJdt .focusBox .num {
+	html:not(.is-home) .inJdt .focusBox .num {
 		bottom: 6px;
 	}
 
-	.inJdt .focusBox .txt li a {
+	html:not(.is-home) .inJdt .focusBox .txt li a {
 		width: 96%;
 		padding-left: 2%;
 	}
 
-	.inYwGwyNews {
+	html:not(.is-home) .inYwGwyNews {
 		width: 100%;
 		height: auto;
 	}
 
-	.inYcxw {
-
+	html:not(.is-home) .inYcxw {
 		background-size: 180%;
 		text-align: center;
 		min-height: 60px;

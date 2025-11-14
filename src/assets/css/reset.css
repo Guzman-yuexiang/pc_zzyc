@@ -115,6 +115,25 @@ html {
 	min-width: 1240px;
 }
 
+/* 首页在移动端不需要 min-width 限制，通过 viewport 缩放实现 */
+html.is-home {
+	min-width: auto;
+}
+
+/* 首页在移动端确保没有滚动条 */
+html.is-home,
+html.is-home body {
+	overflow-x: hidden;
+	width: 100%;
+	max-width: 100%;
+}
+
+/* 首页内容容器 */
+html.is-home body {
+	margin: 0;
+	padding: 0;
+}
+
 a {
 	text-decoration: none;
 }

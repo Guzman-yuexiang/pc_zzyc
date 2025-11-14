@@ -84,7 +84,7 @@
   </div>
   <div class="yddNavs bg015293" 
     :style="{
-      display: state.isChannel ? 'none' : 'block',
+      display: state.isChannel ? 'none !important' : 'block',
     }">
   <ul>
     <li><a href="#/index">首页</a></li>
@@ -413,6 +413,9 @@ const closeAboutDropdown = () => {
 
 const route = useRoute();
 const viewportMeta = ref(null);
+const designWidth = 1240; // 设计宽度
+const minScale = 0.25; // 最小缩放比例
+const maxScale = 1.0; // 最大缩放比例
 
 const ensureViewportMeta = () => {
   if (!viewportMeta.value) {
@@ -423,12 +426,48 @@ const ensureViewportMeta = () => {
   return viewportMeta.value;
 };
 
+// 计算并应用首页的缩放比例
 const applyHomeViewport = () => {
   const meta = ensureViewportMeta();
   if (!meta) {
     return;
   }
-  meta.setAttribute("content", "width=1240, initial-scale=1.0");
+  
+  // 获取设备实际宽度
+  // 检测是否为移动设备
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  let deviceWidth;
+  let scale;
+  
+  if (isMobile) {
+    // 移动设备：使用 window.innerWidth 或 screen.width
+    // 注意：在设置 viewport 之前，innerWidth 可能不准确，所以优先使用 screen.width
+    deviceWidth = (window.screen && window.screen.width) ? window.screen.width : (window.innerWidth || document.documentElement.clientWidth || 375);
+    
+    // 计算缩放比例
+    scale = deviceWidth / designWidth;
+    
+    // 限制缩放比例范围（移动设备）
+    scale = Math.max(minScale, Math.min(maxScale, scale));
+  } else {
+    // 桌面设备：不缩放，保持 1.0
+    scale = 1.0;
+  }
+  
+  // 设置 viewport，使用 user-scalable=no 防止用户手动缩放导致问题
+  // 保留 width=device-width 以支持更广泛的浏览器
+  meta.setAttribute(
+    "content",
+    `width=${designWidth}, initial-scale=${scale.toFixed(3)}, minimum-scale=${scale.toFixed(3)}, maximum-scale=${scale.toFixed(3)}, user-scalable=no`
+  );
+};
+
+// 处理窗口大小变化
+const handleResize = () => {
+  if (route.fullPath === "/index") {
+    applyHomeViewport();
+  }
 };
 
 const applyDefaultViewport = () => {
@@ -447,7 +486,10 @@ const updateLayoutState = (fullPath) => {
   document.body.classList.toggle("is-home", isHome);
 
   if (isHome) {
-    applyHomeViewport();
+    // 延迟一点执行，确保DOM已更新
+    setTimeout(() => {
+      applyHomeViewport();
+    }, 0);
   } else {
     applyDefaultViewport();
   }
@@ -463,12 +505,19 @@ watch(
 
 onMounted(() => {
   document.title = config.TITLE;
+  // 监听窗口大小变化
+  window.addEventListener("resize", handleResize);
+  // 监听屏幕方向变化
+  window.addEventListener("orientationchange", handleResize);
 });
 
 onBeforeUnmount(() => {
   document.documentElement.classList.remove("is-home");
   document.body.classList.remove("is-home");
   applyDefaultViewport();
+  // 移除事件监听
+  window.removeEventListener("resize", handleResize);
+  window.removeEventListener("orientationchange", handleResize);
 });
 </script>
 <style scoped>
