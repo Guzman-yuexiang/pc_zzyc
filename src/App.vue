@@ -428,7 +428,8 @@ const applyHomeViewport = () => {
   if (!meta) {
     return;
   }
-  meta.setAttribute("content", "width=1240, initial-scale=1.0");
+  // 首页在移动端也显示PC样式，使用缩放
+  meta.setAttribute("content", "width=1240, initial-scale=0.3, user-scalable=yes");
 };
 
 const applyDefaultViewport = () => {
@@ -436,7 +437,8 @@ const applyDefaultViewport = () => {
   if (!meta) {
     return;
   }
-  meta.setAttribute("content", "width=device-width, initial-scale=1.0");
+  // 其他页面在移动端显示PC样式，使用缩放
+  meta.setAttribute("content", "width=1240, initial-scale=0.3, user-scalable=yes");
 };
 
 const updateLayoutState = (fullPath) => {

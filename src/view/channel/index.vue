@@ -202,15 +202,15 @@ onMounted(async () => {
     document.head.appendChild(meta);
   }
 
-  // 设置自定义的 viewport 内容
+  // 设置自定义的 viewport 内容 - 修改为显示PC样式
   meta.content =
-    "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover";
+    "width=1240, initial-scale=0.3, user-scalable=yes, viewport-fit=cover";
 });
 onBeforeUnmount(() => {
-  // 在页面卸载时，恢复为默认的 viewport 设置
+  // 在页面卸载时，恢复为PC样式的 viewport 设置
   let meta = document.querySelector('meta[name="viewport"]');
   if (meta) {
-    meta.content = "width=device-width, initial-scale=1.0";
+    meta.content = "width=1240, initial-scale=0.3, user-scalable=yes";
   }
 });
 
