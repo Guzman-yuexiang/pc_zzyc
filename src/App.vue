@@ -47,7 +47,7 @@
           <a href="#/index">国家烟草专卖局</a>
         </li>
         <li class="">
-          <a href="#/channel">专卖监管</a>
+          <a href="#/channel">服务与产品</a>
         </li>
         <li>
           <a href="#/news">行业资讯</a>
